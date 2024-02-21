@@ -11,8 +11,15 @@
   margin-right: 20px;
 }
 
+.logo-container svg {
+  width: 173px;
+  height: 38px;
+}
+
 .user-container {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .greeting {
@@ -51,4 +58,45 @@
 
 .user-container:hover .dropdown {
   display: block;
+}
+
+@media only screen and (max-width: 767px) {
+  .header {
+    padding: 14px;
+  }
+
+  .logo-container svg {
+    width: 158px;
+  }
+
+  .greeting {
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 50vw;
+    margin-right: 0px;
+    padding-right: 0px;
+  }
+
+  .material-symbols-outlined {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .header {
+    padding: 10px;
+  }
+
+  .logo-container svg {
+    width: 100px;
+  }
+
+  .greeting {
+    font-size: 12px;
+  }
+
+  .material-symbols-outlined {
+    font-size: 14px;
+  }
 }
