@@ -6,6 +6,8 @@
 .image-container {
   flex: 0 0 auto;
   margin-right: 20px;
+  border: 1px solid #565656;
+  border-radius: 4px;
 }
 
 .image-container img {
@@ -19,8 +21,41 @@
 
 .text-container h2 {
   margin-top: 0;
+  margin-bottom: 6px;
 }
 
 .text-container p {
+  max-width: 815px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  margin-top: 0;
   margin-bottom: 0;
+  color: #565656;
+}
+
+@media only screen and (max-width: 767px) {
+  .container {
+    margin: 26px 0px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .image-container {
+    margin-right: 0;
+    margin-bottom: 12px;
+  }
+
+  .image-container img {
+    width: 200px;
+    height: auto;
+  }
+
+  .text-container h2 {
+    margin-top: 0px;
+    margin-bottom: 4px;
+  }
 }
