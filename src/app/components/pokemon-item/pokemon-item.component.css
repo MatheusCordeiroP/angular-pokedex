@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.image-container {
+  flex: 0 0 auto;
+  margin-right: 20px;
+}
+
+.image-container img {
+  width: 96px;
+  height: 96px;
+}
+
+.text-container {
+  flex: 1;
+}
+
+.text-container h2 {
+  margin-top: 0;
+}
+
+.text-container p {
+  margin-bottom: 0;
+}

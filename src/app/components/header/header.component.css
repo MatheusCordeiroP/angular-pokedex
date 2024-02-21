@@ -1,0 +1,54 @@
+.header {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.logo-container {
+  margin-right: 20px;
+}
+
+.user-container {
+  position: relative;
+}
+
+.greeting {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.arrow {
+  cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 4px;
+  display: none;
+}
+
+.dropdown-content {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.dropdown-content a {
+  color: black;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #f0f0f0;
+}
+
+.user-container:hover .dropdown {
+  display: block;
+}
