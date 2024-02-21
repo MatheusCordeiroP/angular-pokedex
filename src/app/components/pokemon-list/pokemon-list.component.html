@@ -1,3 +1,48 @@
-@for (item of pokemonList ; track $index) {
-<app-pokemon-item [pokemon]="pokemonList[$index]"></app-pokemon-item>
-}
+<div class="pokemon-list-container">
+  <header class="list-header">
+    <div class="header-left">
+      <h1>Teste Prático Front End</h1>
+      <h2>Poké-Busca</h2>
+    </div>
+
+    <div class="header-right">
+      <div class="search-bar">
+        <input type="text" placeholder="Buscar" />
+        <button>
+          <span class="material-symbols-outlined"> search </span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <hr class="solid" />
+
+  <div class="description">
+    <b> Exibindo {{ 20 }} de {{ 1000 }} itens</b>
+  </div>
+  <hr class="solid" />
+
+  <div class="pokemon-list">
+    @for (item of pokemonList ; track $index) {
+    <app-pokemon-item [pokemon]="pokemonList[$index]"></app-pokemon-item>
+    }
+  </div>
+  <footer class="list-footer">
+    <div class="footer-container">
+      <div class="footer-left">{{ 1 }} de {{ 50 }} páginas</div>
+      <div class="footer-right">
+        <button>
+          <span class="material-symbols-outlined"> first_page </span>
+        </button>
+        <button>
+          <span class="material-symbols-outlined"> navigate_before </span>
+        </button>
+        <button>
+          <span class="material-symbols-outlined"> navigate_next </span>
+        </button>
+        <button>
+          <span class="material-symbols-outlined"> last_page </span>
+        </button>
+      </div>
+    </div>
+  </footer>
+</div>

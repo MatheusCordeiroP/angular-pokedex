@@ -1,0 +1,144 @@
+.pokemon-list-container {
+  margin-top: 0px;
+  margin-left: 64px;
+  background-color: white;
+  padding: 26px;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left h1 {
+  margin: 0;
+}
+.header-left h2 {
+  margin: 0;
+  font-weight: initial;
+  font-size: x-large;
+  margin-top: 6px;
+  margin-bottom: 12px;
+}
+
+.header-right {
+  margin-left: auto;
+}
+
+.search-bar {
+  display: flex;
+  border-radius: 4px;
+  overflow: hidden;
+  height: 40px;
+}
+
+.search-bar input[type="text"] {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  border-radius: 4px 0 0 4px;
+  border-left: 1px solid #686868;
+  border-top: 1px solid #686868;
+  border-bottom: 1px solid #686868;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+}
+
+.search-bar button {
+  background-color: #ffffff;
+  border: none;
+  padding: 8px;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-right: 1px solid #686868;
+  border-top: 1px solid #686868;
+  border-bottom: 1px solid #686868;
+}
+
+.search-bar button:hover {
+  background-color: #ddd;
+}
+
+.search-bar .material-symbols-outlined {
+  color: #686868;
+}
+
+.description {
+  margin-bottom: 10px;
+  color: #000000aa;
+  padding: 12px 4px;
+}
+
+.list-footer {
+  margin-top: 20px;
+  padding-right: 12px;
+  display: flex;
+  justify-content: right;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.footer-right {
+  padding-left: 20px;
+  display: flex;
+}
+
+.footer-right button {
+  background-color: transparent;
+  border: 1px solid transparent;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin-right: 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.footer-right button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+@media only screen and (max-width: 767px) {
+  .list-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-left h1 {
+    margin-bottom: 5px;
+    text-align: center;
+  }
+  .header-left h2 {
+    margin-bottom: 5px;
+    text-align: center;
+  }
+
+  .header-right {
+    margin: 12px 0px;
+  }
+
+  .list-footer {
+    justify-content: center;
+  }
+
+  .pokemon-list-container {
+    margin-top: 0px;
+    margin-left: 0px;
+    background-color: white;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .pokemon-list-container {
+    margin-top: 0px;
+    margin-left: 0px;
+    background-color: white;
+  }
+}
