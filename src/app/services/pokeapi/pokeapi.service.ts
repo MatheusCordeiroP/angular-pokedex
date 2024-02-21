@@ -1,19 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-
-type PokemonList = {
-  name: string;
-  url: string;
-};
-
-type PokemonData = {
-  apiOffset: number;
-  apiLimit: number;
-  isLoading: boolean;
-  pokemonCount: number;
-  pokemonList: Array<PokemonList>;
-};
+import { PokemonList, PokemonData } from '../types';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +11,7 @@ export class PokeapiService {
   apiLimit = 20;
   isLoading = true;
   pokemonCount: number = 0;
-  pokemonList: Array<any> = [];
+  pokemonList: Array<PokemonList> = [];
 
   pokemonData: Subject<PokemonData> = new Subject<PokemonData>();
 
