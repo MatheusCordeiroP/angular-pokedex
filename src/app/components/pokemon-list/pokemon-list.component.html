@@ -17,7 +17,7 @@
   <hr class="solid" />
 
   <div class="description">
-    <b> Exibindo {{ 20 }} de {{ 1000 }} itens</b>
+    <b> Exibindo {{ pokemonList.length }} de {{ pokemonCount }} itens</b>
   </div>
   <hr class="solid" />
 
@@ -28,18 +28,20 @@
   </div>
   <footer class="list-footer">
     <div class="footer-container">
-      <div class="footer-left">{{ 1 }} de {{ 50 }} páginas</div>
+      <div class="footer-left">
+        {{ selectedPage }} de {{ totalPages }} páginas
+      </div>
       <div class="footer-right">
-        <button>
+        <button (click)="changePage('first')">
           <span class="material-symbols-outlined"> first_page </span>
         </button>
-        <button>
+        <button (click)="changePage('previous')">
           <span class="material-symbols-outlined"> navigate_before </span>
         </button>
-        <button>
+        <button (click)="changePage('next')">
           <span class="material-symbols-outlined"> navigate_next </span>
         </button>
-        <button>
+        <button (click)="changePage('last')">
           <span class="material-symbols-outlined"> last_page </span>
         </button>
       </div>

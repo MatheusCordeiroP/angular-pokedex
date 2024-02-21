@@ -2,23 +2,28 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
+type PokemonList = {
+  name: string;
+  url: string;
+};
+
 type PokemonData = {
+  apiOffset: number;
+  apiLimit: number;
   isLoading: boolean;
   pokemonCount: number;
-  pokemonList: Array<any>;
-  previousPage: null | string;
-  nextPage: null | string;
+  pokemonList: Array<PokemonList>;
 };
 
 @Injectable({
   providedIn: 'root',
 })
 export class PokeapiService {
+  apiOffset = 0;
+  apiLimit = 20;
   isLoading = true;
   pokemonCount: number = 0;
   pokemonList: Array<any> = [];
-  previousPage: null | string = null;
-  nextPage: null | string = null;
 
   pokemonData: Subject<PokemonData> = new Subject<PokemonData>();
 
@@ -26,27 +31,17 @@ export class PokeapiService {
     this.fetchPokemon();
   }
 
-  async fetchPokemon() {
+  async fetchPokemon(limit: number = 20, offset: number = 0) {
     this.httpClient
-      .get('https://pokeapi.co/api/v2/pokemon?offset=60&limit=20')
+      .get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`)
       .subscribe((value: any) => {
-        this.updateVariables({
+        this.pokemonData.next({
+          apiOffset: offset,
+          apiLimit: limit,
           isLoading: false,
           pokemonCount: value.count,
           pokemonList: value.results,
-          previousPage: value.previous,
-          nextPage: value.next,
         });
       });
-  }
-
-  updateVariables(pokemonData: PokemonData) {
-    this.pokemonData.next({
-      isLoading: false,
-      pokemonCount: pokemonData.pokemonCount,
-      pokemonList: pokemonData.pokemonList,
-      previousPage: pokemonData.previousPage,
-      nextPage: pokemonData.nextPage,
-    });
   }
 }
