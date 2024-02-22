@@ -107,7 +107,7 @@ export class PokemonListComponent {
     if (this.searchText.trim() === '') {
       return;
     }
-    this.pokeapiService.getPokemonDetails(this.searchText);
+    this.pokeapiService.getPokemonDetails(this.searchText.toLowerCase());
   }
 
   onPokemonDetailsChanged() {
