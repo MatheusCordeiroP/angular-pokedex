@@ -10,3 +10,32 @@ export type PokemonData = {
   pokemonCount: number;
   pokemonList: Array<PokemonList>;
 };
+
+export type TypeColor =
+  | 'normal'
+  | 'fire'
+  | 'water'
+  | 'electric'
+  | 'grass'
+  | 'ice'
+  | 'fighting'
+  | 'poison'
+  | 'ground'
+  | 'flying'
+  | 'psychic'
+  | 'bug'
+  | 'rock'
+  | 'ghost'
+  | 'dragon'
+  | 'dark'
+  | 'steel'
+  | 'fairy';
+
+export type PokemonStats =
+  | 'hp'
+  | 'defense'
+  | 'special-defense'
+  | 'attack'
+  | 'special-attack'
+  | 'speed'
+  | 'total';
