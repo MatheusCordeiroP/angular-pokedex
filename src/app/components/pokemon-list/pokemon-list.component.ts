@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import {
   Router,
   RouterLink,
@@ -28,6 +28,7 @@ import { FormsModule } from '@angular/forms';
 export class PokemonListComponent {
   pokeapiService: PokeapiService;
   router: Router;
+  @ViewChild('mainContainer') mainContainer!: ElementRef;
 
   selectedPage: number = 1;
   totalPages: number = 1;
@@ -93,6 +94,7 @@ export class PokemonListComponent {
         this.pokeapiService.fetchPokemon(this.apiLimit, 0);
         break;
     }
+    this.scrollToTop();
   }
 
   onKeyUp(event: KeyboardEvent) {
@@ -116,5 +118,12 @@ export class PokemonListComponent {
         },
       });
     }
+  }
+
+  scrollToTop(): void {
+    this.mainContainer.nativeElement.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
   }
 }
