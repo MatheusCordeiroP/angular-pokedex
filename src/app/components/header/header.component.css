@@ -16,6 +16,10 @@
   height: 38px;
 }
 
+.logo-container:hover {
+  cursor: pointer;
+}
+
 .user-container {
   position: relative;
   display: flex;

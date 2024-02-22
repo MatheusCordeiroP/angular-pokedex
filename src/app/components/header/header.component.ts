@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,4 +10,13 @@ import { Component, Input } from '@angular/core';
 })
 export class HeaderComponent {
   @Input() username: string = 'Matheus Cordeiro';
+  router: Router;
+
+  constructor(router: Router) {
+    this.router = router;
+  }
+
+  navigateToHome() {
+    this.router.navigate(['/']);
+  }
 }

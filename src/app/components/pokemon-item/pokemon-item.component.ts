@@ -22,9 +22,13 @@ export class PokemonItemComponent {
     return name.charAt(0).toUpperCase() + name.slice(1) + ` #${pokemonNumber}`;
   }
 
-  getPokemonImage() {
+  getPokemonImage(shinyVersion: boolean = false) {
     const cleanUrl = this.pokemon.url.match(/\/(\d+)\/$/);
     const pokemonNumber: string = cleanUrl != null ? cleanUrl[1] : '0';
+
+    if (shinyVersion) {
+      return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemonNumber}.png`;
+    }
 
     return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonNumber}.png`;
   }

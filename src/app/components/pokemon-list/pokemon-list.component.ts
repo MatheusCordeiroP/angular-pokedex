@@ -1,17 +1,33 @@
 import { Component } from '@angular/core';
+import {
+  Router,
+  RouterLink,
+  RouterLinkActive,
+  RouterOutlet,
+} from '@angular/router';
 import { PokemonItemComponent } from '../pokemon-item/pokemon-item.component';
 import { PokeapiService } from '../../services/pokeapi/pokeapi.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pokemon-list',
   standalone: true,
-  imports: [PokemonItemComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
+    PokemonItemComponent,
+  ],
   providers: [PokeapiService],
   templateUrl: './pokemon-list.component.html',
   styleUrl: './pokemon-list.component.css',
 })
 export class PokemonListComponent {
   pokeapiService: PokeapiService;
+  router: Router;
 
   selectedPage: number = 1;
   totalPages: number = 1;
@@ -22,8 +38,14 @@ export class PokemonListComponent {
   pokemonCount: number = 0;
   pokemonList: Array<any> = [];
 
-  constructor(pokeapiService: PokeapiService) {
+  searchText = '';
+  pokemonDetails: any = {};
+
+  constructor(pokeapiService: PokeapiService, router: Router) {
     this.pokeapiService = pokeapiService;
+    this.router = router;
+
+    pokeapiService.fetchPokemon(this.apiLimit, this.apiOffset);
 
     pokeapiService.pokemonData.subscribe((value) => {
       this.selectedPage = Math.ceil(value.apiOffset / value.apiLimit) + 1;
@@ -34,6 +56,11 @@ export class PokemonListComponent {
       this.isLoading = value.isLoading;
       this.pokemonCount = value.pokemonCount;
       this.pokemonList = value.pokemonList;
+    });
+
+    pokeapiService.pokemonDetailSubject.subscribe((value) => {
+      this.pokemonDetails = value.pokemonDetails;
+      this.onPokemonDetailsChanged();
     });
   }
 
@@ -65,6 +92,29 @@ export class PokemonListComponent {
       default:
         this.pokeapiService.fetchPokemon(this.apiLimit, 0);
         break;
+    }
+  }
+
+  onKeyUp(event: KeyboardEvent) {
+    if (event.key === 'Enter' && this.searchText.trim() !== '') {
+      this.searchPokemon();
+    }
+  }
+
+  async searchPokemon() {
+    if (this.searchText.trim() === '') {
+      return;
+    }
+    this.pokeapiService.getPokemonDetails(this.searchText);
+  }
+
+  onPokemonDetailsChanged() {
+    if (this.pokemonDetails && this.pokemonDetails.id) {
+      this.router.navigate(['/details', this.pokemonDetails.id], {
+        state: {
+          pokemonDetails: this.pokemonDetails,
+        },
+      });
     }
   }
 }

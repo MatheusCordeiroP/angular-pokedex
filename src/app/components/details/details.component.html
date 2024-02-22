@@ -1,0 +1,41 @@
+<div class="main-container">
+  <app-header></app-header>
+  <div class="details-container">
+    <h2>{{ formatName(pokemonName) }}</h2>
+    <div class="images-container">
+      <div class="image-container">
+        <img [src]="getPokemonImage()" alt="Imagem do {{ pokemonName }}" />
+      </div>
+      <div class="image-container">
+        <img
+          [src]="getPokemonImage(true)"
+          alt="Imagem do {{ pokemonName }} em sua forma shiny."
+        />
+      </div>
+    </div>
+    <div class="types-container">
+      @for (item of pokemonTypes; track $index) {
+      <div
+        class="type"
+        [style.background-color]="getTypeColor(pokemonTypes[$index].type.name)"
+      >
+        {{ pokemonTypes[$index].type.name }}
+      </div>
+      }
+    </div>
+    <div class="stats-container">
+      @for (item of pokemonStats; track $index) {
+      <div class="stats">
+        <div class="stats-label">
+          {{ getPokemonStatsName(pokemonStats[$index].stat.name) }}
+        </div>
+        <div class="stats-value">{{ pokemonStats[$index].base_stat }}</div>
+      </div>
+      }
+    </div>
+    <button class="return-button" (click)="navigateToHome()">
+      Voltar à Lista
+    </button>
+  </div>
+  <app-footer class="footer"></app-footer>
+</div>

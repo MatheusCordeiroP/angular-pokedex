@@ -105,6 +105,15 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+.footer-right button[disabled] {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.footer-right button[disabled]:hover {
+  background-color: inherit;
+}
+
 @media only screen and (max-width: 767px) {
   .list-header {
     flex-direction: column;

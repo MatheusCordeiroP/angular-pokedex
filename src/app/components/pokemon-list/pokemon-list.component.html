@@ -7,8 +7,14 @@
 
     <div class="header-right">
       <div class="search-bar">
-        <input type="text" placeholder="Buscar" />
-        <button>
+        <input
+          type="text"
+          placeholder="Buscar"
+          [(ngModel)]="searchText"
+          (keyup)="onKeyUp($event)"
+        />
+
+        <button (click)="searchPokemon()">
           <span class="material-symbols-outlined"> search </span>
         </button>
       </div>
@@ -32,16 +38,25 @@
         {{ selectedPage }} de {{ totalPages }} páginas
       </div>
       <div class="footer-right">
-        <button (click)="changePage('first')">
+        <button (click)="changePage('first')" [disabled]="selectedPage === 1">
           <span class="material-symbols-outlined"> first_page </span>
         </button>
-        <button (click)="changePage('previous')">
+        <button
+          (click)="changePage('previous')"
+          [disabled]="selectedPage === 1"
+        >
           <span class="material-symbols-outlined"> navigate_before </span>
         </button>
-        <button (click)="changePage('next')">
+        <button
+          (click)="changePage('next')"
+          [disabled]="selectedPage === totalPages"
+        >
           <span class="material-symbols-outlined"> navigate_next </span>
         </button>
-        <button (click)="changePage('last')">
+        <button
+          (click)="changePage('last')"
+          [disabled]="selectedPage === totalPages"
+        >
           <span class="material-symbols-outlined"> last_page </span>
         </button>
       </div>
