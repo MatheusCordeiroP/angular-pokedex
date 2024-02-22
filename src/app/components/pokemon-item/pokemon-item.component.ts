@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-item',
@@ -12,6 +13,12 @@ export class PokemonItemComponent {
     name: string;
     url: string;
   } = { name: '', url: '' };
+
+  router: Router;
+
+  constructor(router: Router) {
+    this.router = router;
+  }
 
   formatName(name: string): string {
     if (!name) return '';
@@ -31,5 +38,12 @@ export class PokemonItemComponent {
     }
 
     return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonNumber}.png`;
+  }
+
+  goToDetails() {
+    const cleanUrl = this.pokemon.url.match(/\/(\d+)\/$/);
+    const pokemonNumber: string = cleanUrl != null ? cleanUrl[1] : '0';
+
+    this.router.navigate(['/details', pokemonNumber], {});
   }
 }

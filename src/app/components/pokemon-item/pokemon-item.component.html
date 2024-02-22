@@ -3,7 +3,7 @@
     <img [src]="getPokemonImage()" alt="Imagem" />
   </div>
   <div class="text-container">
-    <h2>{{ formatName(pokemon.name) }}</h2>
+    <h2 (click)="goToDetails()">{{ formatName(pokemon.name) }}</h2>
     <p>
       Description ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
       posuere faucibus consequat. Proin nec diam vehicula, vulputate sem vitae,

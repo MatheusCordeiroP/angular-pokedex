@@ -22,6 +22,7 @@
 .text-container h2 {
   margin-top: 0;
   margin-bottom: 6px;
+  cursor: pointer;
 }
 
 .text-container p {
